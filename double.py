@@ -1,7 +1,12 @@
-def doubler():
-    print('done')
+def doubler(function):
+    def subfunction():
+        function()
+        function()
 
-if __name__ == '__main__':
-    doubler()
-    doubler()
+    return subfunction
 
+@doubler
+def test():
+    print("done")
+
+test()
