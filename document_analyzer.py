@@ -1,26 +1,21 @@
-import re
-import string
-from string import punctuation
-from operator import itemgetter
+data = open("document.txt")
 
-def count_word():
+data_text = data.read()
 
-    N = 100
-    words = {}
+split = data_text.split()
 
-    words_gen = (word.strip(punctuation).lower() for line in open("document.txt")
-                 for word in line.split())
+test_dict = {}
+for i in split:
+    if i not in test_dict:
+        test_dict[i] = 1
+    else:
+        test_dict[i] += 1
 
-    for word in words_gen:
-        words[word] = words.get(word, 0) + 1
+output = sorted(test_dict.items(), key=lambda x: x[1])
+output.reverse()
+output = sorted(output, key=lambda x: x[0])
+output = sorted(output, key=lambda x: x[1], reverse=True)
 
-    top_words = sorted(words.items(), key=itemgetter(1), reverse=True)[:N]
-
-    list=top_words[0:5]
-    for word, frequency in list:
-        print("%s %d" % (word, frequency))
-
-
-
-if __name__ == '__main__':
-    count_word()
+print(" ")
+for i in range(5):
+    print output[i][0],"is",output[i][1]

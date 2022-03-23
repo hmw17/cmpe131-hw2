@@ -1,15 +1,18 @@
 import time
 
-def calculate_time():
-    start_time = time.time()
+def calculate_time(func):
+    def cat():
+        start = time.time()
+        func()
+        end = time.time()
+        print "Total time is ", end - start
 
-    #test
-    '''for i in range(5):
-        for j in range(5):
-            for k in range(100):
-                print('done')'''
+    return cat
 
-    print("--- %s seconds ---" % (time.time() - start_time))
 
-if __name__ == '__main__':
-    calculate_time()
+@calculate_time
+def test_funct():
+    time.sleep(3)
+
+
+test_funct()
