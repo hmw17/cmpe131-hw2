@@ -1,16 +1,19 @@
+data_text = data.read()
 
+split = data_text.split()
 
-rawData = open("document.txt")
-splitText = rawData.read().split()
-arr = {}
-for i in splitText:
-    if i not in arr:
-        arr[i] = 1
+test_dict = {}
+for i in split:
+    if i not in test_dict:
+        test_dict[i] = 1
     else:
-        arr[i] += 1
-finaltext = sorted(arr.items(), key=lambda x: x[1])
-finaltext.reverse()
-finaltext = sorted(finaltext, key=lambda x: x[0])
-finaltext = sorted(finaltext, key=lambda x: x[1], reverse=True)
+        test_dict[i] += 1
+
+output = sorted(test_dict.items(), key=lambda x: x[1])
+output.reverse()
+output = sorted(output, key=lambda x: x[0])
+output = sorted(output, key=lambda x: x[1], reverse=True)
+
+print(" ")
 for i in range(5):
-    print(finaltext[i][0] + ":", finaltext[i][1])
+    print(output[i][0] + ":",output[i][1])
