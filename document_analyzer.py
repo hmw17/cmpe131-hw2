@@ -1,4 +1,4 @@
-data = open("document.txt","r", encoding="utf8")
+data = open("document.txt")
 
 data_text = data.read()
 
