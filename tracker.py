@@ -1,17 +1,18 @@
-def func_counter(f):  #declar the decorator
-    def cnt(y):
-        cnt.counter += 1
-        return f
-    cnt.counter = 0
-    return cnt
+def func_counter(f):
+    def sub(*args):
+        sub.counter += 1
+        f(*args)
+
+    sub.counter = 0
+    return sub
 
 
 @func_counter
 def foo(y):
     return y+2**3-34
 
-y=5 #you can input
+y=1
 foo(y)
 foo(y)
-foo(y)
+
 print(foo.counter)
